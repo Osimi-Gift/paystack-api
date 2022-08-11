@@ -20,6 +20,10 @@ Link to live page: [heroku](https://intense-sierra-18564.herokuapp.com/)
 
 ## Heroku debug logs
 
-1. Failed build Mongo Atlas error
+Failed build Mongo Atlas error
 
-Fix - Password field containing irrelevant characters
+- Fix - Password field containing irrelevant characters
+
+MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+
+- Fix - Wrap the uri in double quotes(make it a string)

@@ -21,7 +21,7 @@ exports.postForm = (req, res) => {
          return res.status(400).redirect('/error')
       }
       response = JSON.parse(body); 
-      res.status(200).redirect(response.data.authorization_url)
+    res.status(200).redirect(res.data.authorization_url)
    });
 };
 
