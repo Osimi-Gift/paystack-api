@@ -15,3 +15,5 @@ Should you want to add more styles and texts, feel free to do so by linking via 
 **This  is a prototype, no actual server/client validation has been done and the fixed values/amount can be set to a free one on request.**
 
 **Should you decide to clone this, hope you know you have to use your own secret key and input the callback url in your own paystack account.**
+
+Link to live page: [heroku](https://intense-sierra-18564.herokuapp.com/)
