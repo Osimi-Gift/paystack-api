@@ -14,7 +14,7 @@ const paystack = (request) => {
          }, form
       }
 
-      let callback = (error, response, body) => {
+      const callback = (error, response, body) => {
          return callbacks(error, body)
       }
       request.post(options, callback)
@@ -29,7 +29,7 @@ const paystack = (request) => {
             'cache-control': 'no-cache'
          }
       }
-      let callback = (error, response, body) => {
+      const callback = (error, response, body) => {
          return callbacks(error, body)
       }
       request(options, callback)
