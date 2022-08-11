@@ -1,8 +1,8 @@
-//require('dotenv').config();
+require('dotenv').config();
 //console.log(process.env);
 
 const paystack = (request) => {
-   const secretKey = 'Bearer sk_test_YOUR SECRET KEY';
+   const secretKey = process.env.secretKey
 
    const initPay = (form, callbacks) => {
       const options = {
@@ -30,7 +30,7 @@ const paystack = (request) => {
          }
       }
       let callback = (error, response, body) => {
-         return callbacks(error, body) //same...
+         return callbacks(error, body)
       }
       request(options, callback)
    }
