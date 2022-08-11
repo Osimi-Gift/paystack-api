@@ -4,13 +4,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const port = process.env.PORT || 3000;
 const app = express();
-require('dotenv').config();
 const routes = require('./routes/payRoutes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
    extended: false
 }));
+
 app.use(express.static(path.join(__dirname, 'public/')));
 app.set('view engine', ejs);
 
