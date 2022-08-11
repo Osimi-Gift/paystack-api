@@ -15,7 +15,7 @@ const paystack = (request) => {
       }
 
       const callback = (error, response, body) => {
-         return callbacks(error, body)
+         return callbacks(error, body) // stack trace points here
       }
       request.post(options, callback)
    }
