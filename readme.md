@@ -20,11 +20,37 @@ Link to live page: [heroku](https://intense-sierra-18564.herokuapp.com/)
 
 ## Heroku debug logs
 
+Script error
+
+- Fix - configure your script in your package.json file the same way you would run node/nodemon.
+
 Failed build Mongo Atlas error
 
 - Fix - Password field containing irrelevant characters
 
 MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
 
-- Fix - Wrap the uri in double quotes(make it a string)
-- Real Fix - add them config files in your heroku config variables (annoying if you have alot of secrets to add)
+- ~~Fix - Wrap the uri in double quotes(make it a string)~~
+- Real Fix - add them config files in your heroku config variables (annoying if you have alot of secrets to add but allows for the app to be used without having to install the packages)
+
+- Typeerror messages
+
+- Fix [Read this article or something similar](<https://rollbar.com/blog/javascript-typeerror-cannot-read-property-of-undefined/>)
+
+old block of code giving typeerror with 'authorization_url'
+
+``` javascript
+const response = JSON.parse(body);
+res.status(200).redirect(response.data.authorization_url);
+```
+
+New block to fix issues with heroku, works on dev environment too. Assigned the authorization_url to an authorization variable, which is used to hold the url extracted from paystack api when invoking/calling the initialize function
+
+``` javascript
+ const response = JSON.parse(body);
+ authorization = response.data.authorization_url;
+res.status(200).redirect(authorization);
+console.log(response)
+```
+
+Tests has been done, works as intended. No server or client-side validation done (yet...), this is strictly for testing purposes and not the real thing.

@@ -21,7 +21,7 @@ exports.postForm = (req, res) => {
          return res.status(400).redirect('/error')
       }
       const response = JSON.parse(body);
-      authorization = response.data.authorization_url;
+      authorization = response.data.authorization_url; // typeerror issue fix
       res.status(200).redirect(authorization) // (response.data.authorization_url);
       console.log(response) // why on earth is heroku bitchy...
    });
