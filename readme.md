@@ -27,3 +27,4 @@ Failed build Mongo Atlas error
 MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
 
 - Fix - Wrap the uri in double quotes(make it a string)
+- Real Fix - add them config files in your heroku config variables (annoying if you have alot of secrets to add)

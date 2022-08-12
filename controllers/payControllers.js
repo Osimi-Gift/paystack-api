@@ -16,12 +16,14 @@ exports.postForm = (req, res) => {
    form.amount *= 100;
 
    initPay(form, (error, body) => {
-      if(error) {
+      if (error) {
          console.log(error);
          return res.status(400).redirect('/error')
       }
-      response = JSON.parse(body); 
-    res.status(200).redirect(`response.data.${authorization_url}`) // typeerror on auth_url
+      const response = JSON.parse(body);
+      authorization = response.data.authorization_url;
+      res.status(200).redirect(authorization) // (response.data.authorization_url);
+      console.log(response) // why on earth is heroku bitchy...
    });
 };
 
@@ -29,7 +31,7 @@ exports.postForm = (req, res) => {
 exports.callback = (req, res) => {
    const ref = req.query.reference;
    verifyPay(ref, (error, body) => {
-      if(error) {
+      if (error) {
          console.log(error)
          return res.status(400).redirect('/error');
       }
@@ -57,10 +59,10 @@ exports.callback = (req, res) => {
 exports.receipt = (req, res) => {
    const id = req.params.id;
    Pay.findById(id).then((pay) => {
-      if(!pay){
+      if (!pay) {
          res.status(400).redirect('/error')
       }
-      res.render('success.ejs', {pay});
+      res.render('success.ejs', { pay });
    }).catch((error) => {
       console.log(error)
       res.status.redirect('/error')

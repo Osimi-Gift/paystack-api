@@ -15,7 +15,8 @@ const paystack = (request) => {
       }
 
       const callback = (error, response, body) => {
-         return callbacks(error, body) // stack trace points here
+         console.log(response.body);
+         return callbacks(error, body)
       }
       request.post(options, callback)
    }
@@ -30,9 +31,10 @@ const paystack = (request) => {
          }
       }
       const callback = (error, response, body) => {
+         console.log(response.body)
          return callbacks(error, body)
       }
-      request(options, callback)
+      request(options, callback);
    }
    return { initPay, verifyPay };
 }
